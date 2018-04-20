@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+
+#Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+echo "identifying chimeras"
+time identify_chimeric_seqs.py -t/home/cbmucl39/.conda/envs/qiime1/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt -o chimeric_seqs.txt -i /home/cbmucl39/2018_02_smb/Demultiplexing/dem2/pynast_aligned_seqs/ALIGN_q6G_/ALIGN_q6G_.0.fasta -a ~/2018_02_smb/Demultiplexing/dem2/core_set_aligned.fasta.imputed
+
+# deactivating environment
+source deactivate
