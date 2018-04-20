@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24 
+#SBATCH -p short
+
+# Load modules to run python
+module load eb
+module load Miniconda2
+
+source deactivate
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# splitting libraries
+echo "splitting libraries"
+time split_libraries_fastq.py --rev_comp_mapping_barcodes --rev_comp_barcode  --barcode_type 12  -i ~/2018_02_smb/Joinpairedends/SeqPrep_secondtrial/seqprep_assembled.fastq.gz  -b ~/2018_02_smb/Joinpairedends/SeqPrep_secondtrial/seqprep_assembled.fastq_barcodes.fastq -q 19 -o dem2 -m ~/2018_02_smb/map_incomplete.tsv
+
+# deactivating environment
+source deactivate
