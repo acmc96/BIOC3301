@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH -t 1:00:00
+
+#SBATCH -n 24
+
+#SBATCH -p short
+
+
+
+#Load modules
+
+module load eb
+
+module load Miniconda2
+
+# loading virtualenv
+
+source activate qiime1
+
+# setting temporary directory
+
+export TMPDIR=~/qiime_tmp
+
+# plot taxa
+echo "plot taxa"
+time plot_taxa_summary.py -i ./tax/otu_table_L2.txt -l phylum -c pie,bar,area -o phylum_charts/
+
+source deactivate
