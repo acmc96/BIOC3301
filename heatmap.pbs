@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+
+#Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# heatmap
+echo "heatmap"
+time make_otu_heatmap.py -i /home/cbmucl39/2017_03_smb/OTUs/tax/otu_table_L2.biom -o heatmap_core_17.pdf  --color_scheme YlOrRd --suppress_row_clustering
+
+
+# deactivating source
+
+source deactivate
+~                                                                                  
+~                   
