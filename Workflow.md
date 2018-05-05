@@ -39,5 +39,5 @@ Generated heatmaps of phyulm abundence in each sample, within each dataset for e
 Script creates network text files demonstrating links between sampleID and phylum presence, to be used in Cytoscape. 
 
 
-Spearman's rank statistical analysis was carried out in Excel. 
+Spearman's rank statistical analysis was carried out in Excel, demonstrated in the Spearman's Rank Tests.xlsx workbook. 
 
